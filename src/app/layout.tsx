@@ -11,6 +11,10 @@ export const metadata: Metadata = {
   keywords: ["financial services", "investment", "Avyay Group", "Fin Sudha", "Udupi", "mutual funds"],
   authors: [{ name: "Avyay Group" }],
   metadataBase: new URL("https://avyaygroup.in"),
+  icons: {
+    icon: "/assets/Avyay Group Logo (Retouch).png",
+    apple: "/assets/Avyay Group Logo (Retouch).png",
+  },
   openGraph: {
     type: "website",
     locale: "en_IN",

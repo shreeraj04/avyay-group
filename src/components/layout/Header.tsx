@@ -47,9 +47,6 @@ export default function Header() {
               <p className="font-bold text-lg leading-tight" style={{ color: 'var(--navy)' }}>
                 Avyay Group
               </p>
-              <p className="text-xs" style={{ color: 'var(--teal)' }}>
-                Financial Services
-              </p>
             </div>
           </Link>
 
