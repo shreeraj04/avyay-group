@@ -95,14 +95,14 @@ export default function InvestmentSection() {
           {galleryImages.map((img) => (
             <div
               key={img.src}
-              className="rounded-xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition-shadow bg-white"
+              className="relative aspect-square rounded-xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition-shadow bg-white"
             >
               <Image
                 src={img.src}
                 alt={img.alt}
-                width={400}
-                height={280}
-                className="w-full object-cover"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 50vw, 25vw"
               />
             </div>
           ))}

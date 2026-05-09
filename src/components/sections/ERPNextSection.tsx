@@ -48,7 +48,7 @@ export default function ERPNextSection() {
         </motion.div>
 
         {/* Main content grid */}
-        <div className="grid lg:grid-cols-2 gap-14 items-center mb-16">
+        <div className="grid lg:grid-cols-2 gap-14 items-start mb-16">
           {/* Left — Screenshots */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}

@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "Avyay Group | Financial Services & Investment Solutions",
+    default: "Avyay Group",
     template: "%s | Avyay Group",
   },
   description:
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     locale: "en_IN",
     url: "https://avyaygroup.in",
     siteName: "Avyay Group",
-    title: "Avyay Group | Financial Services & Investment Solutions",
+    title: "Avyay Group",
     description: "Comprehensive financial services and investment solutions for your future.",
   },
 };

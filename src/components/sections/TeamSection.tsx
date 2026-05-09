@@ -59,14 +59,15 @@ export default function TeamSection() {
             >
               {/* Photo */}
               <div
-                className="relative h-72 w-full"
+                className="relative h-96 w-full"
                 style={{ background: 'var(--teal-light)' }}
               >
                 <Image
                   src={member.photo}
                   alt={member.name}
                   fill
-                  className="object-cover object-top"
+                  className="object-cover"
+                  style={{ objectPosition: 'center 10%' }}
                 />
               </div>
 
