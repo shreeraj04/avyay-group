@@ -4,13 +4,19 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight, TrendingUp, Shield, Users } from 'lucide-react'
+import AnimatedCounter from '@/components/ui/AnimatedCounter'
+import LottieAnimation from '@/components/ui/LottieAnimation'
 
 const stats = [
-  { label: 'Years of Expertise', value: '3+' },
-  { label: 'Happy Clients', value: '50+' },
-  { label: 'Services Offered', value: '6' },
-  { label: 'Cities Served', value: '5+' },
+  { label: 'Years of Expertise', value: 3, suffix: '+' },
+  { label: 'Happy Clients', value: 50, suffix: '+' },
+  { label: 'Services Offered', value: 6, suffix: '' },
+  { label: 'Cities Served', value: 5, suffix: '+' },
 ]
+
+// Free finance animation from LottieFiles (open license).
+// Swap this URL with any .json URL from lottiefiles.com to change the animation.
+const HERO_LOTTIE_URL = 'https://assets4.lottiefiles.com/packages/lf20_xvrofzfk.json'
 
 export default function HeroSection() {
   return (
@@ -100,25 +106,35 @@ export default function HeroSection() {
             </div>
           </motion.div>
 
-          {/* Right — visual / logo */}
+          {/* Right — Lottie animation */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.2 }}
             className="hidden lg:flex justify-center items-center"
           >
-            <div
-              className="relative w-80 h-80 rounded-full flex items-center justify-center"
-              style={{ background: 'rgba(13,155,142,0.12)', border: '1px solid rgba(13,155,142,0.3)' }}
-            >
-              <Image
-                src="/assets/Avyay Group Logo (Retouch).png"
-                alt="Avyay Group"
-                width={240}
-                height={240}
-                className="object-contain"
-                priority
+            <div className="relative w-full max-w-md">
+              {/* Lottie — loads from LottieFiles CDN, falls back to logo if unavailable */}
+              <LottieAnimation
+                src={HERO_LOTTIE_URL}
+                className="w-full"
+                loop
+                autoplay
               />
+              {/* Fallback decorative circle shown behind the Lottie */}
+              <div
+                className="absolute inset-0 -z-10 w-80 h-80 m-auto rounded-full"
+                style={{ background: 'rgba(13,155,142,0.08)', border: '1px solid rgba(13,155,142,0.2)' }}
+              >
+                <Image
+                  src="/assets/Avyay Group Logo (Retouch).png"
+                  alt="Avyay Group"
+                  width={200}
+                  height={200}
+                  className="object-contain absolute inset-0 m-auto opacity-20"
+                  priority
+                />
+              </div>
             </div>
           </motion.div>
         </div>
@@ -136,7 +152,9 @@ export default function HeroSection() {
               className="text-center p-4 rounded-xl"
               style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}
             >
-              <p className="text-3xl font-bold text-white">{stat.value}</p>
+              <p className="text-3xl font-bold text-white">
+                <AnimatedCounter to={stat.value} suffix={stat.suffix} />
+              </p>
               <p className="text-xs text-gray-400 mt-1">{stat.label}</p>
             </div>
           ))}

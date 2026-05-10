@@ -1,8 +1,13 @@
 'use client'
 
 import { useState } from 'react'
-import { motion } from 'framer-motion'
-import { Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Mail, Phone, MapPin, Send } from 'lucide-react'
+import LottieAnimation from '@/components/ui/LottieAnimation'
+
+// Free success checkmark animation from LottieFiles (open license).
+// Swap with any .json URL from lottiefiles.com to change.
+const SUCCESS_LOTTIE_URL = 'https://assets10.lottiefiles.com/packages/lf20_jbrw3hcz.json'
 
 export default function ContactSection() {
   const [form, setForm] = useState({ name: '', email: '', phone: '', subject: '', message: '' })
@@ -125,20 +130,34 @@ export default function ContactSection() {
             viewport={{ once: true }}
           >
             {status === 'success' ? (
-              <div className="h-full flex items-center justify-center">
-                <div className="text-center p-10">
-                  <CheckCircle size={56} className="mx-auto mb-4" style={{ color: 'var(--teal)' }} />
-                  <h3 className="text-xl font-bold mb-2" style={{ color: 'var(--navy)' }}>Message Sent!</h3>
-                  <p className="text-gray-600">Thank you for reaching out. We&apos;ll get back to you within 24 hours.</p>
-                  <button
-                    onClick={() => setStatus('idle')}
-                    className="mt-6 px-5 py-2 rounded-lg text-sm font-semibold text-white"
-                    style={{ background: 'var(--teal)' }}
-                  >
-                    Send Another Message
-                  </button>
-                </div>
-              </div>
+              <AnimatePresence>
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.4 }}
+                  className="h-full flex items-center justify-center"
+                >
+                  <div className="text-center p-10">
+                    <div className="w-36 h-36 mx-auto">
+                      <LottieAnimation
+                        src={SUCCESS_LOTTIE_URL}
+                        loop={false}
+                        autoplay
+                        className="w-full h-full"
+                      />
+                    </div>
+                    <h3 className="text-xl font-bold mb-2 mt-2" style={{ color: 'var(--navy)' }}>Message Sent!</h3>
+                    <p className="text-gray-600">Thank you for reaching out. We&apos;ll get back to you within 24 hours.</p>
+                    <button
+                      onClick={() => setStatus('idle')}
+                      className="mt-6 px-5 py-2 rounded-lg text-sm font-semibold text-white"
+                      style={{ background: 'var(--teal)' }}
+                    >
+                      Send Another Message
+                    </button>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid sm:grid-cols-2 gap-5">
