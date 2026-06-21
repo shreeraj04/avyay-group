@@ -80,9 +80,9 @@ export default function ContactSection() {
                   <div>
                     <p className="text-sm font-semibold mb-1">Office Address</p>
                     <p className="text-sm text-gray-300 leading-relaxed">
-                      D.No. 2-4-14A7, Ground Floor,<br />
-                      RAAJ TOWERS, Near City Bus Stand,<br />
-                      Udupi – 576101, Karnataka
+                      Near Kadiyali Primary School,<br />
+                      Kunjibettu, Udupi – 576102,<br />
+                      Karnataka
                     </p>
                   </div>
                 </div>

@@ -86,7 +86,7 @@ export default function Footer() {
             <ul className="space-y-3 text-sm text-gray-300">
               <li className="flex items-start gap-2">
                 <MapPin size={16} className="mt-0.5 flex-shrink-0" style={{ color: 'var(--teal)' }} />
-                <span>D.No. 2-4-14A7, Ground Floor, RAAJ TOWERS, Near City Bus Stand, Udupi – 576101</span>
+                <span>Near Kadiyali Primary School, Kunjibettu, Udupi – 576102</span>
               </li>
               <li className="flex items-center gap-2">
                 <Mail size={16} className="flex-shrink-0" style={{ color: 'var(--teal)' }} />

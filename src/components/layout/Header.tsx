@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, MapPin } from 'lucide-react'
 
 const navLinks = [
   { label: 'Home', href: '/' },
@@ -18,6 +18,7 @@ const navLinks = [
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [showBanner, setShowBanner] = useState(true)
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20)
@@ -31,6 +32,25 @@ export default function Header() {
         scrolled ? 'bg-white shadow-md' : 'bg-white/95 backdrop-blur-sm'
       }`}
     >
+      {/* Moved banner */}
+      {showBanner && (
+        <div
+          className="flex items-center justify-center gap-2 px-4 py-2 text-white text-xs sm:text-sm font-medium relative"
+          style={{ background: 'var(--teal)' }}
+        >
+          <MapPin size={14} className="flex-shrink-0" />
+          <span>
+            <span className="font-bold">We&apos;ve moved!</span> Our new office is at Near Kadiyali Primary School, Kunjibettu, Udupi 576102
+          </span>
+          <button
+            onClick={() => setShowBanner(false)}
+            aria-label="Dismiss"
+            className="absolute right-3 top-1/2 -translate-y-1/2 p-1 rounded hover:bg-white/20 transition-colors"
+          >
+            <X size={14} />
+          </button>
+        </div>
+      )}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
