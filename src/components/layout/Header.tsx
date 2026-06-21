@@ -15,15 +15,24 @@ const navLinks = [
   { label: 'Contact', href: '/#contact' },
 ]
 
+// Banner auto-expires after this date (1 month from office relocation: June 21, 2026)
+const BANNER_EXPIRY = new Date('2026-07-21').getTime()
+
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
-  const [showBanner, setShowBanner] = useState(true)
+  const [showBanner, setShowBanner] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20)
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  useEffect(() => {
+    if (Date.now() < BANNER_EXPIRY) {
+      setShowBanner(true)
+    }
   }, [])
 
   return (
@@ -40,7 +49,7 @@ export default function Header() {
         >
           <MapPin size={14} className="flex-shrink-0" />
           <span>
-            <span className="font-bold">We&apos;ve moved!</span> Our new office is at Near Kadiyali Primary School, Kunjibettu, Udupi 576102
+            <span className="font-bold">We&apos;ve moved!</span> Our new office: D.No 1-2-119A, Gana Vihara, Near Kadiyali Primary School, Kunjibettu, Udupi – 576102
           </span>
           <button
             onClick={() => setShowBanner(false)}

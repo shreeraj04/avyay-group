@@ -80,6 +80,7 @@ export default function ContactSection() {
                   <div>
                     <p className="text-sm font-semibold mb-1">Office Address</p>
                     <p className="text-sm text-gray-300 leading-relaxed">
+                      D.No 1-2-119A, Gana Vihara,<br />
                       Near Kadiyali Primary School,<br />
                       Kunjibettu, Udupi – 576102,<br />
                       Karnataka
